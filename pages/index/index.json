@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "count-up":"./../../components/count-up/index"
+  }
+}

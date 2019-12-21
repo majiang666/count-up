@@ -1,0 +1,3 @@
+<view>
+  <count-up numberRes="{{numberRes}}" />
+</view>
