@@ -1,5 +1,6 @@
 # count-up
 支付宝小程序数字滚动组件  
-目前遗留两个问题：  
-1：设置滚动样式需要放在数字显示之后  
-2：文字滚动的距离有误差  
+参考：  
+https://github.com/zoeblow/numberAnimate/blob/master/dist/script/numberAnimate.js  
+http://itakeo.com/blog/2017/07/10/odometer/  
+https://github.com/Takeos/Odometer/blob/master/dist/Odometer.js  

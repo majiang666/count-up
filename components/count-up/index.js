@@ -1,4 +1,4 @@
-import { isNumber } from './../../utils/utils';
+import { isNumber, numFormat } from './../../utils/utils';
 
 Component({
   data: {
@@ -11,7 +11,8 @@ Component({
     this.numberToArr(this.props.numberRes);
   },
   methods: {
-    numberToArr(num) {
+    numberToArr(nums) {
+      let num = numFormat(nums);
       let res = isNumber(num) ? num.toString().split('') : num.split('');
       this.setData({
         numberArr: res || []

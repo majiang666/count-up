@@ -1,5 +1,5 @@
 <view>
-  <count-up numberRes="{{numberRes}}" arrs="{{arrs}}" />
+  <count-up numberRes="{{numberRes}}" styleArr="{{styleArr}}" />
 
   <button size="mini" type="primary" onTap="changeNum1">改变数字</button>
   <button size="mini" type="primary" onTap="changeNum2">改变数字</button>

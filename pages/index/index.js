@@ -1,40 +1,48 @@
-import { isNumber } from './../../utils/utils';
+import { isNumber, numFormat } from './../../utils/utils';
 
 Page({
   data: {
     numberRes: ''
   },
   onLoad(query) {
-    this.setNumber(71);
+    this.setNumber(71.6);
   },
-  // 设置滚动数字，重置0必须先执行
   setNumber(numberValue) {
     this.setData({
       numberRes: numberValue
     });
-    this.animate(numberValue);
+    this.onReady();
   },
-  animate(numberValue) {
+  onReady() {
+    const numberValue = this.data.numberRes;
+    my.createSelectorQuery()
+      .select('.count-up .item').boundingClientRect().exec((ret) => {
+        if (ret && ret[0]) {
+          let itemHeight = ret[0].height;
+          this.animate(numberValue, itemHeight);
+        }
+      })
+  },
+  animate(numberValues, itemHeight) {
+    let numberValue = numFormat(numberValues)
     let res = isNumber(numberValue) ? numberValue.toString().split('') : numberValue.split('');
-    let arrs = [];
+    let styleArr = [];
     res.forEach((item) => {
-      arrs.push(
-        `transform:translateY(${parseInt(-60 * item)}rpx);transition:all ${item > 3 ? (item / 3) : item == 0 ? 1 : item * 1}s cubic-bezier(.25,.1,.25,1)`
+      styleArr.push(
+        `transform:translateY(${(item === '.' ? -10 * itemHeight : item === ',' ? -11 * itemHeight : -item * itemHeight)}px);transition:all ${item === '.' || item === ',' ? 0 : 1}s cubic-bezier(.25,.1,.25,1)`
       )
     });
-    setTimeout(() => {
-      this.setData({
-        arrs
-      })
-    }, 800);
+    this.setData({
+      styleArr
+    })
   },
   changeNum1() {
     this.setNumber(99);
   },
   changeNum2() {
-    this.setNumber(104);
+    this.setNumber(10456);
   },
   changeNum3() {
-    this.setNumber(926);
+    this.setNumber(9269.44);
   }
 });
