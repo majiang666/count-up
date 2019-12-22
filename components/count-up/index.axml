@@ -11,6 +11,6 @@
     <text class="item">8</text>
     <text class="item">9</text>
     <text class="item">.</text>
-    <text class="item">,</text>
+    <text class="item" a:if="{{symbol}}">{{symbol}}</text>
   </view>
 </view>

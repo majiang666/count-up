@@ -10,3 +10,13 @@ export const numFormat = (num) => {
   })
   return res;
 }
+
+export const createSelectorQuery = () => {
+  return new Promise(resolve => {
+    my.createSelectorQuery().select('.count-up .item').boundingClientRect().exec((ret) => {
+        if (ret && ret[0]) {
+          resolve(ret[0].height);
+        }
+      })
+  })
+}

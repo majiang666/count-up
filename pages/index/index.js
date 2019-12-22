@@ -1,30 +1,22 @@
-import { isNumber, numFormat } from './../../utils/utils';
+import { isNumber, numFormat, createSelectorQuery } from './../../utils/utils';
 
 Page({
   data: {
-    numberRes: ''
+    numberRes: '', // 传入数字
+    symbol:',' // 千位分割
   },
   onLoad(query) {
-    this.setNumber(71.6);
+    this.setNumber(716);
   },
-  setNumber(numberValue) {
-    this.setData({
-      numberRes: numberValue
-    });
-    this.onReady();
+  // dom加载完成，获取数字元素实际高度
+  async onReady() {
+    const itemHeight = await createSelectorQuery();
+    this.animate(itemHeight);
   },
-  onReady() {
-    const numberValue = this.data.numberRes;
-    my.createSelectorQuery()
-      .select('.count-up .item').boundingClientRect().exec((ret) => {
-        if (ret && ret[0]) {
-          let itemHeight = ret[0].height;
-          this.animate(numberValue, itemHeight);
-        }
-      })
-  },
-  animate(numberValues, itemHeight) {
-    let numberValue = numFormat(numberValues)
+  // 数字滚动动画
+  animate(itemHeight) {
+    const { symbol, numberRes } = this.data;
+    let numberValue = symbol ? numFormat(numberRes) : numberRes;
     let res = isNumber(numberValue) ? numberValue.toString().split('') : numberValue.split('');
     let styleArr = [];
     res.forEach((item) => {
@@ -36,6 +28,12 @@ Page({
       styleArr
     })
   },
+  setNumber(numberValue) {
+    this.setData({
+      numberRes: numberValue
+    });
+    this.onReady(); // 必须等到元素加载完成，给数字设置距离，暂时没想到好的解决方案
+  },
   changeNum1() {
     this.setNumber(99);
   },
@@ -43,6 +41,6 @@ Page({
     this.setNumber(10456);
   },
   changeNum3() {
-    this.setNumber(9269.44);
+    this.setNumber(926944);
   }
 });

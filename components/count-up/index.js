@@ -12,7 +12,7 @@ Component({
   },
   methods: {
     numberToArr(nums) {
-      let num = numFormat(nums);
+      let num = this.props.symbol ? numFormat(nums) : nums;
       let res = isNumber(num) ? num.toString().split('') : num.split('');
       this.setData({
         numberArr: res || []
