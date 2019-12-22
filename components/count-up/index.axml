@@ -1,6 +1,6 @@
 <import-sjs name="style" from="./index.sjs" />
 <view class="count-number">
-  <view class="count-up" a:for="{{numberArr}}" style="{{style(item)}}">
+  <view class="count-up"  a:for="{{numberArr}}" style="{{arrs[index]}}">
     <text>0</text>
     <text>1</text>
     <text>2</text>

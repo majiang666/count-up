@@ -1,1 +1,4 @@
 /* required by usingComponents */
+button{
+  margin-top:20rpx;
+}

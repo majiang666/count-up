@@ -2,7 +2,7 @@ import { isNumber } from './../../utils/utils';
 
 Component({
   data: {
-    numberArr: []
+    numberArr: [],
   },
   async didMount() {
     this.numberToArr(this.props.numberRes);

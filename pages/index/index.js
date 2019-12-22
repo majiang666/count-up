@@ -5,31 +5,36 @@ Page({
     numberRes: ''
   },
   onLoad(query) {
-    this.setNumber(6);
-    setTimeout(() => {
-      this.setNumber(9);
-    }, 5000)
-    setTimeout(() => {
-      this.setNumber(701);
-    }, 9000)
+    this.setNumber(71);
   },
   // 设置滚动数字，重置0必须先执行
-  async setNumber(numberValue = 0) {
-    await this.resetNum(numberValue);
+  setNumber(numberValue) {
     this.setData({
       numberRes: numberValue
     });
+    this.animate(numberValue);
   },
-  // 每次都要先重置为0，不然默认和数字位数变化时不会滚动，暂时没找到更好的解决方案
-  resetNum(number) {
-    let resetVal = null;
-    let res = isNumber(number) ? number.toString().split('') : number.split('');
-    resetVal = res.map(() => {
-      return '0';
-    }).join('');
-    console.log(resetVal);
-    this.setData({
-      numberRes: resetVal
+  animate(numberValue) {
+    let res = isNumber(numberValue) ? numberValue.toString().split('') : numberValue.split('');
+    let arrs = [];
+    res.forEach((item) => {
+      arrs.push(
+        `transform:translateY(${parseInt(-60 * item)}rpx);transition:all ${item > 3 ? (item / 3) : item == 0 ? 1 : item * 1}s cubic-bezier(.25,.1,.25,1)`
+      )
     });
+    setTimeout(() => {
+      this.setData({
+        arrs
+      })
+    }, 800);
+  },
+  changeNum1() {
+    this.setNumber(99);
+  },
+  changeNum2() {
+    this.setNumber(104);
+  },
+  changeNum3() {
+    this.setNumber(926);
   }
 });
