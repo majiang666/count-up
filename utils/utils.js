@@ -14,9 +14,24 @@ export const numFormat = (num) => {
 export const createSelectorQuery = () => {
   return new Promise(resolve => {
     my.createSelectorQuery().select('.count-up .item').boundingClientRect().exec((ret) => {
-        if (ret && ret[0]) {
-          resolve(ret[0].height);
-        }
-      })
+      if (ret && ret[0]) {
+        resolve(ret[0].height);
+      }
+    })
   })
+}
+
+export const throttle = (fn, delay) => {
+  var timer;
+  return function() {
+    var _this = this;
+    var args = arguments;
+    if (timer) {
+      return;
+    }
+    timer = setTimeout(function() {
+      fn.apply(_this, args);
+      timer = null; // 在delay后执行完fn之后清空timer，此时timer为假，throttle触发可以进入计时器
+    }, delay)
+  }
 }

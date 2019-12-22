@@ -6,12 +6,16 @@ Page({
     symbol:',' // 千位分割
   },
   onLoad(query) {
-    this.setNumber(716);
+    this.setNumber(716,1);
   },
   // dom加载完成，获取数字元素实际高度
   async onReady() {
+    console.log("onReady");
     const itemHeight = await createSelectorQuery();
     this.animate(itemHeight);
+    // this.setData({
+    //   itemHeight
+    // })
   },
   // 数字滚动动画
   animate(itemHeight) {
@@ -28,11 +32,17 @@ Page({
       styleArr
     })
   },
-  setNumber(numberValue) {
+  setNumber(numberValue,flag) {
     this.setData({
       numberRes: numberValue
     });
-    this.onReady(); // 必须等到元素加载完成，给数字设置距离，暂时没想到好的解决方案
+    // 初始化加载，只加载一次优化
+    if(!flag){
+      this.onReady(); // 必须等到元素加载完成，给数字设置距离，暂时没想到好的解决方案
+      // setTimeout(() => {
+      //   this.animate(this.data.itemHeight);
+      // },100);
+    }
   },
   changeNum1() {
     this.setNumber(99);
