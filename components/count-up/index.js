@@ -1,22 +1,27 @@
 import { isNumber, numFormat } from './../../utils/utils';
 
 Component({
-  data: {
-    numberArr: [],
-  },
-  async didMount() {
-    this.numberToArr(this.props.numberRes);
+  didMount() {
+    this.animate();
   },
   didUpdate() {
-    this.numberToArr(this.props.numberRes);
+    this.animate();
   },
   methods: {
-    numberToArr(nums) {
-      let num = this.props.symbol ? numFormat(nums) : nums;
-      let res = isNumber(num) ? num.toString().split('') : num.split('');
-      this.setData({
-        numberArr: res || []
+    // 数字滚动动画
+    animate() {
+      const { symbol,itemHeight,numberItem } = this.props;
+      let numberValue = symbol ? numFormat(numberItem,symbol) : numberItem;
+      let res = isNumber(numberValue) ? numberValue.toString().split('') : numberValue.split('');
+      let styleArr = [];
+      res.forEach((item) => {
+        styleArr.push(
+          `transform:translateY(${(item === '.' ? -10 * itemHeight : item === symbol ? -11 * itemHeight : -item * itemHeight)}px);transition:all ${item === '.' || item === symbol ? 0 : 1}s cubic-bezier(.25,.1,.25,1)`
+        )
       });
+      this.setData({
+        styleArr
+      })
     }
   }
 });
