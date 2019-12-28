@@ -20,3 +20,13 @@ export const createSelectorQuery = (dom) => {
     })
   })
 }
+
+export const getSystemInfo = () => {
+  return new Promise(resolve => {
+    my.getSystemInfo({
+      success: (res) => {
+        resolve(res);
+      }
+    })
+  })
+  }

@@ -16,7 +16,7 @@ Component({
       let styleArr = [];
       res.forEach((item) => {
         styleArr.push(
-          `transform:translateY(${(item === '.' ? -10 * itemHeight : item === symbol ? -11 * itemHeight : -item * itemHeight)}px);transition:all ${item === '.' || item === symbol ? 0 : 1}s cubic-bezier(.25,.1,.25,1)`
+          `transform:translateY(${(item === '.' ? -10 * itemHeight : item === symbol ? -11 * itemHeight : -item * itemHeight)}rpx);transition:all ${item === '.' || item === symbol ? 0 : 1}s cubic-bezier(.25,.1,.25,1)`
         )
       });
       this.setData({

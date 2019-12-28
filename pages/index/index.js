@@ -1,4 +1,4 @@
-import { createSelectorQuery } from './../../utils/utils';
+import { createSelectorQuery, getSystemInfo } from './../../utils/utils';
 
 Page({
   data: {
@@ -15,8 +15,12 @@ Page({
   // dom加载完成，获取数字元素实际高度
   async onReady() {
     const itemHeight = await createSelectorQuery('.count-up .item');
+    const { windowWidth } = await getSystemInfo();
     this.setData({
-      itemHeight
+      itemHeight: this.pxTorpx(itemHeight,windowWidth)
     })
+  },
+  pxTorpx(itemHeight,windowWidth){
+    return itemHeight * (750 / windowWidth);
   }
 });
