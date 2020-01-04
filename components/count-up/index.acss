@@ -1,11 +1,10 @@
 .count-number {
-  height: 60rpx;
+  height: 80rpx;
   overflow: hidden;
 }
 
 .count-up {
   width: 50rpx;
-  line-height: 60rpx;
   text-align: center;
   display: inline-block;
   background: #f00;
@@ -15,7 +14,8 @@
   font-size: 30rpx;
   color: #f60;
   width: 50rpx;
-  line-height: 60rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   float: left;
   color: #fff;
   font-family: '微软雅黑';
