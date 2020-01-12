@@ -1,22 +1,22 @@
 .count-number {
   height: 80rpx;
+  display: flex;
   overflow: hidden;
 }
 
 .count-up {
   width: 50rpx;
   text-align: center;
-  display: inline-block;
   background: #f00;
+  height: 960rpx;
 }
 
-.count-up text {
+.count-up view {
   font-size: 30rpx;
   color: #f60;
   width: 50rpx;
   height: 80rpx;
   line-height: 80rpx;
-  float: left;
   color: #fff;
   font-family: '微软雅黑';
 }

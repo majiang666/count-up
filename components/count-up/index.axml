@@ -2,17 +2,17 @@
 
 <view class="count-number">
   <view class="count-up"  a:for="{{utils(numberItem,symbol)}}" style="{{styleArr[index]}}">
-    <text class="item">0</text>
-    <text class="item">1</text>
-    <text class="item">2</text>
-    <text class="item">3</text>
-    <text class="item">4</text>
-    <text class="item">5</text>
-    <text class="item">6</text>
-    <text class="item">7</text>
-    <text class="item">8</text>
-    <text class="item">9</text>
-    <text class="item">.</text>
-    <text class="item" a:if="{{symbol}}">{{symbol}}</text>
+    <view class="item">0</view>
+    <view class="item">1</view>
+    <view class="item">2</view>
+    <view class="item">3</view>
+    <view class="item">4</view>
+    <view class="item">5</view>
+    <view class="item">6</view>
+    <view class="item">7</view>
+    <view class="item">8</view>
+    <view class="item">9</view>
+    <view class="item">.</view>
+    <view class="item" a:if="{{symbol}}">{{symbol}}</view>
   </view>
 </view>
