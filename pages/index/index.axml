@@ -1,5 +1,3 @@
 <view>
-  <block a:for="{{numberList}}">
-    <count-up numberItem="{{item}}" itemHeight="{{itemHeight}}" symbol="{{symbol}}" />
-  </block>
+  <count-up numberItem="{{number}}" itemHeight="{{itemHeight}}" symbol="{{symbol}}" />
 </view>
